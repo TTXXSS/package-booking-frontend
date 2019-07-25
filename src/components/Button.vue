@@ -1,33 +1,33 @@
 <template>
   <div id="app">
-    <Button></Button>
-    <Table></Table>
+     <a-button @click="handleAll">All</a-button>
+     <a-button>已预约</a-button>
+     <a-button>已取件</a-button>
+     <a-button>未预约</a-button>
   </div>
 </template>
 <script>
-import Table from './components/Table.vue'
-import Button from './components/Button.vue'
 const axios = require('axios');
 
-
 export default {
-  name: 'app',
+  name: 'Button',
   data () {
   return {
-       data:0
+       data:[]
     }
   },
   components: {
-    Table,
-    Button
   },
-  mounted(){
-  axios.get('http://localhost:8083/pack')
+  methods:{
+      handleAll(){
+         // Make a request for a user with a given ID
+        
+axios.get('http://localhost:8083/pack')
   .then(response=> {
      this.data=response.data
     // handle success
      this.$store.commit("updateData",response.data);
-    console.log(this.$store.state.data);
+    console.log(response.data[0]);
   })
   .catch(function (error) {
     // handle error
@@ -36,10 +36,18 @@ export default {
   .finally(function () {
     // always executed
   });
-  },
-  methods:{
-   
-    
+
+
+      },
+     handleHavingRegister(){
+          
+      },
+     handleHavingFetch(){
+          
+      },
+    handleHavingNotRegister(){
+          
+      }
   }
 }
 </script>
