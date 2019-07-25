@@ -1,9 +1,9 @@
 <template>
   <div id="app">
      <a-button @click="handleAll">All</a-button>
-     <a-button>已预约</a-button>
-     <a-button>已取件</a-button>
-     <a-button>未预约</a-button>
+     <a-button @click="handleHavingRegister">已预约</a-button>
+     <a-button @click="handleHavingFetch">已取件</a-button>
+     <a-button @click="handleHavingNotRegister">未预约</a-button>
   </div>
 </template>
 <script>
@@ -40,13 +40,47 @@ axios.get('http://localhost:8083/pack')
 
       },
      handleHavingRegister(){
-          
+            axios.get('http://localhost:8083/pack/11/2')
+  .then(response=> {
+
+   this.$store.commit("updateData",response.data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });  
+
       },
      handleHavingFetch(){
-          
+            axios.get('http://localhost:8083/pack/1')
+  .then(response=> {
+ 
+   this.$store.commit("updateData",response.data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });  
       },
     handleHavingNotRegister(){
-          
+          axios.get('http://localhost:8083/pack/22/1')
+  .then(response=> {
+   
+    // handle success
+     this.$store.commit("updateData",response.data);
+   
+  })
+  .catch(function (error) {
+    // handle error
+    console.log('test');
+  })
+  .finally(function () {
+    // always executed
+  });
       }
   }
 }

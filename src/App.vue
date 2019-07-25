@@ -2,11 +2,13 @@
   <div id="app">
     <Button></Button>
     <Table></Table>
+    <Form></Form>
   </div>
 </template>
 <script>
 import Table from './components/Table.vue'
 import Button from './components/Button.vue'
+import Form from './components/Form.vue'
 const axios = require('axios');
 
 
@@ -19,7 +21,8 @@ export default {
   },
   components: {
     Table,
-    Button
+    Button,
+    Form
   },
   mounted(){
   axios.get('http://localhost:8083/pack')
