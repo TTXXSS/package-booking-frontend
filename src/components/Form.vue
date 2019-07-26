@@ -1,6 +1,6 @@
 <template>
 <a-form
-    :form="form"
+    :form=""
     :hideRequiredMark="false"
     @submit="handleSubmit"
   >
@@ -56,11 +56,12 @@ export default {
   },
   methods:{
    handleSubmit:function(){
-axios.post('http://localhost:8083/pack', {
+axios.post('http://localhost:8083', {
     name: this.name,
     telephone: this.telephone,
     state:"未取件",
     registerTime:"2019.7.26"
+
   })
   .then(function (response) {
     console.log(response);
